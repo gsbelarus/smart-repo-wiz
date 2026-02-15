@@ -1,27 +1,30 @@
 import { motion } from "framer-motion";
-import { Shield, GraduationCap, GitPullRequest, Lightbulb } from "lucide-react";
+import featureReview from "@/assets/feature-review.jpg";
+import featureFixes from "@/assets/feature-fixes.jpg";
+import featureLearning from "@/assets/feature-learning.jpg";
+import featureAcademic from "@/assets/feature-academic.jpg";
 
 const features = [
   {
-    icon: GitPullRequest,
+    image: featureReview,
     title: "Ревью пул реквестов",
     description:
       "Автоматический анализ каждого PR: выявление ошибок, нарушений практик, уязвимостей безопасности и неоптимального кода.",
   },
   {
-    icon: Lightbulb,
+    image: featureFixes,
     title: "Умные исправления",
     description:
       "Не просто находим проблемы — предлагаем конкретные исправления с объяснением, почему это решение лучше.",
   },
   {
-    icon: GraduationCap,
+    image: featureLearning,
     title: "Обучающий режим",
     description:
       "Оценка уровня кода и персональные рекомендации: что изучить, какие навыки прокачать для роста.",
   },
   {
-    icon: Shield,
+    image: featureAcademic,
     title: "Учебный процесс",
     description:
       "Автоматическая оценка работ студентов с античитинговой системой для выявления плагиата.",
@@ -56,15 +59,23 @@ const FeaturesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group rounded-2xl bg-glass p-8 transition-all duration-300 hover:glow-border hover:bg-card/80"
+              className="group rounded-2xl bg-glass overflow-hidden transition-all duration-300 hover:glow-border hover:bg-card/80 flex flex-col sm:flex-row"
             >
-              <div className="mb-5 inline-flex rounded-xl bg-primary/10 p-3">
-                <feature.icon className="h-6 w-6 text-primary" />
+              <div className="sm:w-1/2 h-48 sm:h-auto relative overflow-hidden">
+                <img
+                  src={feature.image}
+                  alt={feature.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/60 hidden sm:block" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-card/60 sm:hidden" />
               </div>
-              <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {feature.description}
-              </p>
+              <div className="sm:w-1/2 p-8 flex flex-col justify-center">
+                <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>
