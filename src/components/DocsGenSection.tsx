@@ -1,34 +1,40 @@
 import { motion } from "framer-motion";
-import { FileText, BookOpen, FileDown, Globe, GitBranch, RefreshCw } from "lucide-react";
+import { FileText } from "lucide-react";
+import docCode from "@/assets/doc-code.jpg";
+import docWiki from "@/assets/doc-wiki.jpg";
+import docPdf from "@/assets/doc-pdf.jpg";
+import docApi from "@/assets/doc-api.jpg";
+import docChangelog from "@/assets/doc-changelog.jpg";
+import docAutoupdate from "@/assets/doc-autoupdate.jpg";
 
 const docFeatures = [
   {
-    icon: FileText,
+    image: docCode,
     title: "Документация к коду",
     description: "Автоматическое описание функций, классов и модулей с примерами использования и типами параметров.",
   },
   {
-    icon: BookOpen,
+    image: docWiki,
     title: "Wiki-страницы",
     description: "Генерация структурированных wiki-страниц для внутренней базы знаний команды с навигацией и поиском.",
   },
   {
-    icon: FileDown,
+    image: docPdf,
     title: "PDF-документы",
     description: "Создание автономных PDF-файлов для передачи заказчикам, аудиторам и внешним командам.",
   },
   {
-    icon: Globe,
+    image: docApi,
     title: "API-документация",
     description: "Автоматическая генерация OpenAPI/Swagger спецификаций из кода с интерактивными примерами запросов.",
   },
   {
-    icon: GitBranch,
+    image: docChangelog,
     title: "Changelog",
     description: "Формирование журнала изменений из истории коммитов и PR с группировкой по фичам и исправлениям.",
   },
   {
-    icon: RefreshCw,
+    image: docAutoupdate,
     title: "Автообновление",
     description: "Документация синхронизируется с кодом — при изменении функций описания обновляются автоматически.",
   },
@@ -66,13 +72,20 @@ const DocsGenSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group rounded-2xl bg-glass p-8 transition-all duration-300 hover:glow-border hover:bg-card/80"
+              className="group rounded-2xl bg-glass overflow-hidden transition-all duration-300 hover:glow-border hover:bg-card/80 flex flex-col"
             >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 transition-colors group-hover:bg-primary/20">
-                <item.icon className="h-6 w-6 text-primary" />
+              <div className="h-48 relative overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-card/60" />
               </div>
-              <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+              <div className="p-8 flex flex-col flex-1">
+                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+              </div>
             </motion.div>
           ))}
         </div>
