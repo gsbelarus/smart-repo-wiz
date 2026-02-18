@@ -1,34 +1,40 @@
 import { motion } from "framer-motion";
-import { FlaskConical, Zap, Layers, ShieldCheck, Gauge, Box } from "lucide-react";
+import { FlaskConical } from "lucide-react";
+import testUnit from "@/assets/test-unit.jpg";
+import testIntegration from "@/assets/test-integration.jpg";
+import testLoad from "@/assets/test-load.jpg";
+import testSecurity from "@/assets/test-security.jpg";
+import testE2e from "@/assets/test-e2e.jpg";
+import testProject from "@/assets/test-project.jpg";
 
 const testTypes = [
   {
-    icon: FlaskConical,
+    image: testUnit,
     title: "Юнит-тесты",
     description: "Автоматическая генерация модульных тестов для отдельных функций и методов с покрытием граничных случаев.",
   },
   {
-    icon: Layers,
+    image: testIntegration,
     title: "Интеграционные тесты",
     description: "Проверка взаимодействия между модулями, сервисами и API — без ручного написания сценариев.",
   },
   {
-    icon: Gauge,
+    image: testLoad,
     title: "Нагрузочные тесты",
     description: "Генерация сценариев для стресс-тестирования: определение предельной нагрузки и узких мест системы.",
   },
   {
-    icon: ShieldCheck,
+    image: testSecurity,
     title: "Тесты безопасности",
     description: "Автоматическое создание тестов на уязвимости: SQL-инъекции, XSS, CSRF и другие атаки.",
   },
   {
-    icon: Zap,
+    image: testE2e,
     title: "E2E-тесты",
     description: "Сквозные тесты пользовательских сценариев — от логина до оплаты, включая UI-взаимодействия.",
   },
   {
-    icon: Box,
+    image: testProject,
     title: "Тесты на уровне проекта",
     description: "Анализ архитектуры проекта и генерация комплексного набора тестов для всей кодовой базы.",
   },
@@ -67,13 +73,20 @@ const TestGenSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group rounded-2xl bg-glass p-8 transition-all duration-300 hover:glow-border hover:bg-card/80"
+              className="group rounded-2xl bg-glass overflow-hidden transition-all duration-300 hover:glow-border hover:bg-card/80 flex flex-col"
             >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 transition-colors group-hover:bg-primary/20">
-                <item.icon className="h-6 w-6 text-primary" />
+              <div className="h-48 relative overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-card/60" />
               </div>
-              <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+              <div className="p-8 flex flex-col flex-1">
+                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+              </div>
             </motion.div>
           ))}
         </div>
