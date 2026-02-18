@@ -6,6 +6,7 @@ import TestGenSection from "@/components/TestGenSection";
 import DocsGenSection from "@/components/DocsGenSection";
 import BenefitsSection from "@/components/BenefitsSection";
 import ModelsSection from "@/components/ModelsSection";
+import PricingSection from "@/components/PricingSection";
 import ContactModal from "@/components/ContactModal";
 import Footer from "@/components/Footer";
 
@@ -21,6 +22,7 @@ const Index = () => {
       <DocsGenSection />
       <BenefitsSection />
       <ModelsSection />
+      <PricingSection />
       <Footer />
       <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
     </div>
