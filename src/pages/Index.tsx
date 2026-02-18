@@ -2,6 +2,9 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
+import TestGenSection from "@/components/TestGenSection";
+import DocsGenSection from "@/components/DocsGenSection";
+import BenefitsSection from "@/components/BenefitsSection";
 import ModelsSection from "@/components/ModelsSection";
 import ContactModal from "@/components/ContactModal";
 import Footer from "@/components/Footer";
@@ -14,6 +17,9 @@ const Index = () => {
       <Navbar />
       <HeroSection onLearnMore={() => setContactOpen(true)} />
       <FeaturesSection />
+      <TestGenSection />
+      <DocsGenSection />
+      <BenefitsSection />
       <ModelsSection />
       <Footer />
       <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
